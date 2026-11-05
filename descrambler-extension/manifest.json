@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Tessera Descrambler (prototype)",
+  "version": "0.1.0",
+  "description": "Descrambles Tessera-scrambled (scrv1) videos frame by frame inside the YouTube player.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://www.youtube-nocookie.com/*"
+  ],
+  "action": {
+    "default_title": "Tessera",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.youtube-nocookie.com/embed/*"
+      ],
+      "js": ["descrambler-core.js", "content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

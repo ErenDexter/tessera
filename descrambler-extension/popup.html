@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tessera</title>
+<style>
+  :root { --bg:#fff; --ink:#1c1c1a; --muted:#6b6a64; --line:#e2e0da; --field:#f6f5f2; --accent:#2457d6; --ok:#1f7a4a; --bad:#b42318; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d1b; --ink:#ecebe6; --muted:#9a998f; --line:#33322e; --field:#141413; --accent:#7aa2ff; --ok:#5cc28c; --bad:#ff8a7a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; width:340px; background:var(--bg); color:var(--ink); font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  header { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-bottom:1px solid var(--line); }
+  h1 { font-size:14px; margin:0; font-weight:650; }
+  .switch { display:flex; align-items:center; gap:6px; color:var(--muted); font-size:12px; }
+  section { padding:12px 14px; border-bottom:1px solid var(--line); }
+  label { display:block; font-size:11.5px; color:var(--muted); font-weight:550; margin:8px 0 3px; }
+  label:first-child { margin-top:0; }
+  input, textarea { width:100%; padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:var(--field); color:var(--ink); font:12px ui-monospace,Menlo,monospace; }
+  textarea { height:52px; resize:vertical; }
+  button { margin-top:10px; padding:6px 12px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; font-weight:600; cursor:pointer; }
+  #msg { font-size:12px; margin-left:8px; }
+  #msg.ok { color:var(--ok); } #msg.bad { color:var(--bad); }
+  ul { list-style:none; margin:0; padding:0; }
+  li { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 0; border-top:1px solid var(--line); }
+  li:first-child { border-top:0; }
+  li .id { font:12px ui-monospace,Menlo,monospace; }
+  li .label { color:var(--muted); font-size:12px; }
+  li button { margin:0; padding:3px 8px; background:transparent; color:var(--bad); border-color:var(--line); font-weight:500; }
+  .empty, .hint { color:var(--muted); font-size:12px; }
+  h2 { font-size:12px; margin:0 0 6px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.04em; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tessera</h1>
+  <label class="switch"><input id="enabled" type="checkbox" style="width:auto"> On</label>
+</header>
+<section>
+  <label for="vid">YouTube video ID</label>
+  <input id="vid" placeholder="dQw4w9WgXcQ" spellcheck="false">
+  <label for="code">Share code</label>
+  <textarea id="code" placeholder="scrv1:eyJ2IjoxLC..." spellcheck="false"></textarea>
+  <label for="key">Key</label>
+  <input id="key" type="password" placeholder="passphrase used when scrambling">
+  <label for="label">Label (optional)</label>
+  <input id="label" placeholder="Q3 all-hands">
+  <div><button id="save">Save for this video</button><span id="msg"></span></div>
+</section>
+<section>
+  <h2>Saved videos</h2>
+  <ul id="list"></ul>
+  <p class="hint">Prototype: keys are stored unencrypted in this browser profile.</p>
+</section>
+<script src="descrambler-core.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

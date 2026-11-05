@@ -1,0 +1,15 @@
+# Test videos and their manifests
+*.mp4
+*.mp4.json
+*.mkv
+*.mov
+*.webm
+*.png
+
+# Packaged extension (build output)
+*.zip
+
+# Unrelated documents
+*.pdf
+
+__pycache__/
